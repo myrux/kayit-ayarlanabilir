@@ -113,37 +113,3 @@ client.on("error", e => {
 client.login(ayarlar.token);
 
 //---------------------------------KOMUTLAR---------------------------------\\
-client.on("guildMemberRemove", async member => {
-let bot1 = db.fetch(`sahip_${member.user.id}`)
-const kanal = db.fetch(`kicklog_${member.guild.id}`)
-let bot = member.guild.members.cache.get(bot1) 
-let members = member;
-if(members = bot1) {
-let sebeb = `${member.user.tag} Adlı Sahip Kullanıcı Sunucudan Ayrıldı İçin.`
-const embed = new Discord.MessageEmbed()
-.setColor("RANDOM")
-.setDescription(`
-**<a:cikicikiban:666240274300665857>  »** ${member} Sunucudan Ayrıldığı İçin Botu Atıldı!
-₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋
-** <a:cikicikiban:666240274300665857> » Bot Bilgisi | ↓ ↓ ↓**
-
-** <a:kemik:806871405970325524>  » Sahip |  ${member} \`[ ${member.id} ]\`**
-** <a:alev:666240274682478592>  »  Bot  |   ${bot} \`[ ${bot} ]\`**
-`)
-const embed2 = new Discord.MessageEmbed()
-.setColor("RANDOM")
-.setDescription(`
-** <a:cikicikiban:666240274300665857>  »** ${member} Sunucudan Ayrıldığın İçin Botun Atıldı!
-₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋
-** <a:kemik:806871405970325524>  » Bot Bilgisi |  ↓ ↓ ↓**
-
-** <a:cikicikiban:666240274300665857>  » Sahip |  ${member} \`[ ${member.id} ]\`**
-** <a:alev:666240274682478592>  »  Bot  |  ${bot} \`[ ${bot} ]\`**
-`)
-member.send(embed2)
-kanal.send(embed)
-if(bot.user.bot) {
-   bot.kick()
-}  
-db.delete(`sahip_${member.user.id}`)
-}})
