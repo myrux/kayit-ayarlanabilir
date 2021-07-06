@@ -1,2 +1,2 @@
-# kay-tab
+# kayıt-ayarlanabilir
 kayıt-ab-v12
